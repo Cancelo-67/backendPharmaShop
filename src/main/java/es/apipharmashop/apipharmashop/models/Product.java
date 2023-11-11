@@ -22,17 +22,17 @@ public class Product {
 
     private String name;
 
+    private String category;
+
     private Number price;
 
     private String description;
 
-    private Integer age;
-
-    public Product(String image, String name, Number price, String description, Integer age) {
+    public Product(String image, String name, String category, Number price, String description) {
         this.image = image;
         this.name = name;
+        this.category = category;
         this.price = price;
         this.description = description;
-        this.age = age;
     }
 }

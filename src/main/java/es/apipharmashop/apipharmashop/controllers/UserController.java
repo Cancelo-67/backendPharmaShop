@@ -3,7 +3,11 @@ package es.apipharmashop.apipharmashop.controllers;
 
 import es.apipharmashop.apipharmashop.models.User;
 import es.apipharmashop.apipharmashop.repositories.UserRepository;
+import es.apipharmashop.apipharmashop.services.TokenService;
+import org.springframework.security.core.Authentication;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.slf4j.LoggerFactory;
+import org.slf4j.Logger;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
@@ -52,6 +56,24 @@ public class UserController {
             return new ResponseEntity<>(user, HttpStatus.OK);
         }
         return new ResponseEntity<>(false, HttpStatus.NOT_FOUND);
+    }
+
+    //Pedir token
+
+        private static final Logger LOG = LoggerFactory.getLogger(UserController.class);
+
+        private final TokenService tokenService;
+
+        public UserController(TokenService tokenService) {
+            this.tokenService = tokenService;
+        }
+
+    @PostMapping("/token")
+    public String token(Authentication authentication) {
+        LOG.debug("Token requested for user: '{}'", authentication.getName());
+        String token = tokenService.generateToken(authentication);
+        LOG.debug("Token granted: {}", token);
+        return token;
     }
 
 
