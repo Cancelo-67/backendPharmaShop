@@ -1,17 +1,20 @@
 package es.apipharmashop.apipharmashop.models;
 
 import jakarta.persistence.*;
+import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 
 @Entity
 @Getter@Setter
+@AllArgsConstructor
 @NoArgsConstructor
 @Table(name = "usercustom")
 public class User {
@@ -40,7 +43,9 @@ public class User {
 
     private String address;
 
-    private String cart;
+    private String token;
+
+    private List<Long> cart;
 
 
     //Relacion con el modelo Order
@@ -48,8 +53,7 @@ public class User {
     private Set<Order> orders = new HashSet<>();
 
 
-    public User(Long id, String username, String surname, Role role, String phoneNumber, String email, String password, String address, String cart, Set<Order> orders) {
-        this.id = id;
+    public User(String username, String surname, Role role, String phoneNumber, String email, String password, String address, String token, List<Long> cart, Set<Order> orders) {
         this.username = username;
         this.surname = surname;
         this.role = role;
@@ -57,21 +61,15 @@ public class User {
         this.email = email;
         this.password = new BCryptPasswordEncoder().encode(password);
         this.address = address;
+        this.token = token;
         this.cart = cart;
         this.orders = orders;
     }
 
-    public User(String username, String surname, Role role, String phoneNumber, String email, String password, String address, String cart, Set<Order> orders) {
+    //Constructor para login y actualizar el token
+    public User(String username, String surname, String token) {
         this.username = username;
         this.surname = surname;
-        this.role = role;
-        this.phoneNumber = phoneNumber;
-        this.email = email;
-        this.password = new BCryptPasswordEncoder().encode(password);
-        this.address = address;
-        this.cart = cart;
-        this.orders = orders;
+        this.token = token;
     }
-
-    //public boolean isAdmin() {return admin;}
 }

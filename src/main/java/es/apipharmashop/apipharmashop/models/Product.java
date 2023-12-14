@@ -1,6 +1,7 @@
 package es.apipharmashop.apipharmashop.models;
 
 
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.Id;
@@ -26,13 +27,17 @@ public class Product {
 
     private Number price;
 
+    @Column(length = 1000)
     private String description;
 
-    public Product(String image, String name, String category, Number price, String description) {
+    private Integer stock;
+
+    public Product(String image, String name, String category, Number price, String description, Integer stock) {
         this.image = image;
         this.name = name;
         this.category = category;
         this.price = price;
         this.description = description;
+        this.stock = stock;
     }
 }

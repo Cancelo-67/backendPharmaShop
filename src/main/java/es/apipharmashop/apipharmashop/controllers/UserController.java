@@ -69,13 +69,15 @@ public class UserController {
         }
 
     @PostMapping("/token")
-    public String token(Authentication authentication) {
-        LOG.debug("Token requested for user: '{}'", authentication.getName());
-        String token = tokenService.generateToken(authentication);
-        LOG.debug("Token granted: {}", token);
-        return token;
-    }
-
-
-
+    public ResponseEntity<String> token(Authentication authentication) {
+        try {
+            LOG.debug("Token requested for user: '{}'", authentication.getName());
+            String token = tokenService.generateToken(authentication);
+            LOG.debug("Token granted: {}", token);
+            return ResponseEntity.ok(token);
+        } catch (Exception e) {
+            LOG.error("Error generating token:", e);
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("Error generating token");
+        }
+        }
 }
