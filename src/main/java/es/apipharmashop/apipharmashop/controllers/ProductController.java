@@ -24,12 +24,12 @@ public class ProductController {
     ResponseEntity<Object> index(){ return new ResponseEntity<>(productRepository.findAll(), HttpStatus.OK);}
 
 
-    @GetMapping(value = "/products/{id}", params = "id")
-    ResponseEntity<Object> showById(@PathVariable("id") Long id) {
+    @GetMapping(value = "/products/{id}")
+    ResponseEntity<Object> show(@PathVariable("id") Long id) {
         return new ResponseEntity<>(productRepository.findAllById(Collections.singleton(id)), HttpStatus.OK);
     }
 
-    @GetMapping("/products/{category}")
+    @GetMapping("/products/byCategory/{category}")
     public ResponseEntity<Object> showByCategory(@PathVariable("category") String category) {
         List<Product> products = productRepository.findByCategory(category);
         return new ResponseEntity<>(products, HttpStatus.OK);

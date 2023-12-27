@@ -40,11 +40,11 @@ public class Seeder implements CommandLineRunner {
         Set<Order> orders = new HashSet<>();
 
         //Users
-        User user1 = new User(   "Alejandro", "Cancelo", User.Role.ADMIN, "652671034", "alecanjerez67@gmail.com", "pruebacontraseña123","C/Prueba", "", Collections.emptyList(), orders);
+        User user1 = new User(   "Alejandro", "Cancelo", "Hombre",User.Role.ADMIN, "652671034", "alecanjerez67@gmail.com", "pruebacontraseña123","C/Prueba", "", Collections.emptyList(), orders);
         userRepository.save(user1);
-        User user2 = new User("Gonzalo", "Pulido", User.Role.USER, "652671034", "gon07ps@gmail.com", "prueba123", "C/Prueba","", Collections.emptyList(), orders);
+        User user2 = new User("Gonzalo", "Pulido", "Hombre",User.Role.USER, "652671034", "gon07ps@gmail.com", "prueba123", "C/Prueba","", Collections.emptyList(), orders);
         userRepository.save(user2);
-        User user3 = new User("Natalia", "Rodriguez", User.Role.ADMIN, "678015612", "natalia@gmail.com", "nataliaprueba123", "C/Canaria","", Collections.emptyList(), orders);
+        User user3 = new User("Natalia", "Mujer","Rodriguez", User.Role.ADMIN, "678015612", "natalia@gmail.com", "nataliaprueba123", "C/Canaria","", Collections.emptyList(), orders);
         userRepository.save(user3);
 
 

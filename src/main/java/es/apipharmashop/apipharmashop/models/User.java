@@ -26,6 +26,8 @@ public class User {
 
     private String surname;
 
+    private String gender;
+
     public enum Role {
         ADMIN,
         USER,
@@ -53,9 +55,10 @@ public class User {
     private Set<Order> orders = new HashSet<>();
 
 
-    public User(String username, String surname, Role role, String phoneNumber, String email, String password, String address, String token, List<Long> cart, Set<Order> orders) {
+    public User(String username, String surname, String gender,Role role, String phoneNumber, String email, String password, String address, String token, List<Long> cart, Set<Order> orders) {
         this.username = username;
         this.surname = surname;
+        this.gender = gender;
         this.role = role;
         this.phoneNumber = phoneNumber;
         this.email = email;
