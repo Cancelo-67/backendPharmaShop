@@ -31,13 +31,16 @@ public class Product {
     private String description;
 
     private Integer stock;
+    @Column(length = 10000)
+    private String resume;
 
-    public Product(String image, String name, String category, Number price, String description, Integer stock) {
+    public Product(String image, String name, String category, Number price, String description, Integer stock, String resume) {
         this.image = image;
         this.name = name;
         this.category = category;
         this.price = price;
         this.description = description;
         this.stock = stock;
+        this.resume = resume;
     }
 }
