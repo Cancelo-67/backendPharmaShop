@@ -18,9 +18,18 @@ public class Comment {
     @GeneratedValue
     private Long id;
 
-    private Long id_User;
+    private Number id_product;
+
+    private Number id_user;
 
     private String name;
 
     private String comment;
+
+    public Comment(Number id_product, Number id_user, String name, String comment) {
+        this.id_product = id_product;
+        this.id_user = id_user;
+        this.name = name;
+        this.comment = comment;
+    }
 }

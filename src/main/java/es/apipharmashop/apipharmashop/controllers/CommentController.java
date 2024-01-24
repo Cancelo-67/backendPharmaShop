@@ -2,7 +2,6 @@ package es.apipharmashop.apipharmashop.controllers;
 
 
 import es.apipharmashop.apipharmashop.models.Comment;
-import es.apipharmashop.apipharmashop.models.Order;
 import es.apipharmashop.apipharmashop.repositories.CommentRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -18,17 +17,23 @@ public class CommentController {
     CommentRepository commentRepository;
 
 
+    @GetMapping("/comments")
+        ResponseEntity<Object> index() {
+            return new ResponseEntity<>(commentRepository.findAll(), HttpStatus.OK);
+        }
+
     @GetMapping("/comments/{id}")
     ResponseEntity<Object> show(@PathVariable("id") Long id) {
         return new ResponseEntity<>(commentRepository.findAllById(Collections.singleton(id)), HttpStatus.OK);
     }
+
     @PostMapping("/comments")
     public ResponseEntity<Object> create(@RequestBody Comment comment){
         commentRepository.save(comment);
         return new ResponseEntity<>(comment, HttpStatus.OK);
     }
 
-    @DeleteMapping("/orders/{id}")
+    @DeleteMapping("/comments/{id}")
     public ResponseEntity<Object> delete(@PathVariable("id")Long id){
         Optional<Comment> comment = commentRepository.findById(id);
         comment.ifPresent(value -> commentRepository.delete(value));

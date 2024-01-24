@@ -37,7 +37,7 @@ public class User {
     @Enumerated(EnumType.STRING)
     private Role role;
 
-    private String phoneNumber;
+    private String birthdate;
 
     private String email;
 
@@ -47,7 +47,7 @@ public class User {
 
     private String token;
 
-    private List<Long> cart;
+    private List<Long> favorites;
 
 
     //Relacion con el modelo Order
@@ -55,17 +55,17 @@ public class User {
     private Set<Order> orders = new HashSet<>();
 
 
-    public User(String username, String surname, String gender,Role role, String phoneNumber, String email, String password, String address, String token, List<Long> cart, Set<Order> orders) {
+    public User(String username, String surname, String gender,Role role, String birthdate, String email, String password, String address, String token, List<Long> favorites, Set<Order> orders) {
         this.username = username;
         this.surname = surname;
         this.gender = gender;
         this.role = role;
-        this.phoneNumber = phoneNumber;
+        this.birthdate = birthdate;
         this.email = email;
         this.password = new BCryptPasswordEncoder().encode(password);
         this.address = address;
         this.token = token;
-        this.cart = cart;
+        this.favorites = favorites;
         this.orders = orders;
     }
 

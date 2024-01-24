@@ -1,9 +1,11 @@
 package es.apipharmashop.apipharmashop.bootstrap;
 
 
+import es.apipharmashop.apipharmashop.models.Comment;
 import es.apipharmashop.apipharmashop.models.Order;
 import es.apipharmashop.apipharmashop.models.Product;
 import es.apipharmashop.apipharmashop.models.User;
+import es.apipharmashop.apipharmashop.repositories.CommentRepository;
 import es.apipharmashop.apipharmashop.repositories.OrderRepository;
 import es.apipharmashop.apipharmashop.repositories.ProductRepository;
 import es.apipharmashop.apipharmashop.repositories.UserRepository;
@@ -22,6 +24,8 @@ public class Seeder implements CommandLineRunner {
     OrderRepository orderRepository;
     @Autowired
     ProductRepository productRepository;
+    @Autowired
+    CommentRepository commentRepository;
 
     public Seeder(UserRepository userRepository) {
         this.userRepository = userRepository;
@@ -40,11 +44,11 @@ public class Seeder implements CommandLineRunner {
         Set<Order> orders = new HashSet<>();
 
         //Users
-        User user1 = new User(   "Alejandro", "Cancelo", "Hombre",User.Role.ADMIN, "652671034", "alecanjerez67@gmail.com", "pruebacontraseña123","C/Prueba", "", Collections.emptyList(), orders);
+        User user1 = new User(   "Alejandro", "Cancelo", "Hombre",User.Role.ADMIN, "03/02/2001", "alecanjerez67@gmail.com", "pruebacontraseña123","C/Prueba", "", Collections.emptyList(), orders);
         userRepository.save(user1);
-        User user2 = new User("Gonzalo", "Pulido", "Hombre",User.Role.USER, "652671034", "gon07ps@gmail.com", "prueba123", "C/Prueba","", Collections.emptyList(), orders);
+        User user2 = new User("Gonzalo", "Pulido", "Hombre",User.Role.USER, "07/08/2001", "gon07ps@gmail.com", "prueba123", "C/Prueba","", Collections.emptyList(), orders);
         userRepository.save(user2);
-        User user3 = new User("Natalia", "Mujer","Rodriguez", User.Role.ADMIN, "678015612", "natalia@gmail.com", "nataliaprueba123", "C/Canaria","", Collections.emptyList(), orders);
+        User user3 = new User("Natalia", "Mujer","Rodriguez", User.Role.ADMIN, "06/12/2000", "natalia@gmail.com", "nataliaprueba123", "C/Canaria","", Collections.emptyList(), orders);
         userRepository.save(user3);
 
 
@@ -97,5 +101,16 @@ public class Seeder implements CommandLineRunner {
                 "Instile 1 ó 2 gotas en cada ojo, 3 a 6 veces al día o según indique el especialista.\n" +
                 "Cierre bien la botella después de su uso.\n");
         productRepository.save(product14);
+
+        //Comments
+
+        Comment comment1 = new Comment(1,1, "Alejandro", "Comentario de Alejandro1");
+        commentRepository.save(comment1);
+        Comment comment2 = new Comment(1,1, "Alejandro", "Comentario de Alejandro2");
+        commentRepository.save(comment2);
+        Comment comment3 = new Comment(1,1, "Alejandro", "Comentario de Alejandro3");
+        commentRepository.save(comment3);
+        Comment comment4 = new Comment(1,1, "Alejandro", "Comentario de Alejandro4");
+        commentRepository.save(comment4);
     }
 }

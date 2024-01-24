@@ -21,11 +21,13 @@ public class Order {
 
     private Date date;
 
+    private Number amount;
+
     @ManyToOne
     private User user;
 
-
-    public Order(Date date) {
+    public Order(Date date, Number amount) {
         this.date = date;
+        this.amount = amount;
     }
 }
