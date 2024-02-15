@@ -39,12 +39,12 @@ public class Seeder implements CommandLineRunner {
         long randomTime = currentDate.getTime() + TimeUnit.DAYS.toMillis(random.nextInt(30));
         Date orderDate = new Date(randomTime);
         Order order1 = new Order();
-        order1.setDate(orderDate);
+        order1.setDate(orderDate);  
         orderRepository.save(order1);
         Set<Order> orders = new HashSet<>();
 
         //Users
-        User user1 = new User(   "Alejandro", "Cancelo", "Hombre",User.Role.ADMIN, "03/02/2001", "alecanjerez67@gmail.com", "pruebacontraseña123","C/Prueba", "", Collections.emptyList(), orders);
+        User user1 = new User(   "Alejandro", "Cancelo", "Hombre",User.Role.ADMIN, "07/08/2001", "alecanjerez67@gmail.com", "pruebacontraseña123","C/Prueba", "", Collections.emptyList(), orders);
         userRepository.save(user1);
         User user2 = new User("Gonzalo", "Pulido", "Hombre",User.Role.USER, "07/08/2001", "gon07ps@gmail.com", "prueba123", "C/Prueba","", Collections.emptyList(), orders);
         userRepository.save(user2);
