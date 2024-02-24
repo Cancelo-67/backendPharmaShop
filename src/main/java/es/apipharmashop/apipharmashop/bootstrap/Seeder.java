@@ -39,7 +39,7 @@ public class Seeder implements CommandLineRunner {
         long randomTime = currentDate.getTime() + TimeUnit.DAYS.toMillis(random.nextInt(30));
         Date orderDate = new Date(randomTime);
         Order order1 = new Order();
-        order1.setDate(orderDate);  
+        order1.setDate(orderDate);
         orderRepository.save(order1);
         Set<Order> orders = new HashSet<>();
 
