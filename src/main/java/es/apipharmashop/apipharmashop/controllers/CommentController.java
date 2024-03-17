@@ -16,7 +16,7 @@ public class CommentController {
     @Autowired
     CommentRepository commentRepository;
 
-
+//Ruta de comentarios
     @GetMapping("/comments")
         ResponseEntity<Object> index() {
             return new ResponseEntity<>(commentRepository.findAll(), HttpStatus.OK);
