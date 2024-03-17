@@ -44,11 +44,11 @@ public class Seeder implements CommandLineRunner {
         Set<Order> orders = new HashSet<>();
 
         //Users
-        User user1 = new User(   "Alejandro", "Cancelo", "Hombre",User.Role.ADMIN, "07/08/2001", "alecanjerez67@gmail.com", "pruebacontraseña123","C/Prueba", "", Collections.emptyList(), orders);
+        User user1 = new User(1L,   "Alex67","Alejandro", "Cancelo",User.Role.ADMIN, "07/08/2001", "alecanjerez67@gmail.com", "pruebacontraseña123","C/Prueba", Collections.emptyList(), Collections.emptyList(), orders);
         userRepository.save(user1);
-        User user2 = new User("Gonzalo", "Pulido", "Hombre",User.Role.USER, "07/08/2001", "gon07ps@gmail.com", "prueba123", "C/Prueba","", Collections.emptyList(), orders);
+        User user2 = new User(2L,"Gps07","Gonzalo", "Pulido",User.Role.USER, "07/08/2001", "gon07ps@gmail.com", "prueba123", "C/Prueba",Collections.emptyList(), Collections.emptyList(), orders);
         userRepository.save(user2);
-        User user3 = new User("Natalia", "Mujer","Rodriguez", User.Role.ADMIN, "06/12/2000", "natalia@gmail.com", "nataliaprueba123", "C/Canaria","", Collections.emptyList(), orders);
+        User user3 = new User(3L,"Natt","Natalia", "Rodriguez", User.Role.ADMIN, "06/12/2000", "natalia@gmail.com", "nataliaprueba123", "C/Canaria",Collections.emptyList(), Collections.emptyList(), orders);
         userRepository.save(user3);
 
 
@@ -65,11 +65,11 @@ public class Seeder implements CommandLineRunner {
         Product product4 = new Product("https://www.pharmashop.es/12578-home_default/goah-clinic-siluit-60-capsulas.jpg", "Goah clinic siluit","Higiene", 5, "descripcion", 20, "resumen");
         productRepository.save(product4);
 
-        Product product5 = new Product("https://www.pharmashop.es/14052-home_default/adiprox-advanced-50-capsulas.jpg", "Adiprox advanced","Mascotas", 5, "descripcion", 17, "resumen");
+        Product product5 = new Product("https://www.pharmashop.es/17563-home_default/rosacure-intensive.jpg", "Rosacure intensive","Cosmetica", 5, "descripcion", 17, "resumen");
         productRepository.save(product5);
-        Product product6 = new Product("https://www.pharmashop.es/19344-home_default/lynfase-concentrado-fluido-monodosis-12-frascos.jpg", "Lynfase Concentrado Fluido Monodosis","Dental", 5, "descripcion", 14, "resumen");
+        Product product6 = new Product("https://www.pharmashop.es/16062-home_default/martiderm-dsp-mask-mascarilla-despigmentante.jpg", "Martiderm PIGMENT ZERO","Cosmetica", 9.55, "descripcion", 14, "resumen");
         productRepository.save(product6);
-        Product product7 = new Product("https://www.pharmashop.es/19345-home_default/lynfase-tisana-bolsitas-filtro-20-filtros.jpg", "Lynfase Concentrado Fluido Monodosis","Bebe y mama", 5, "descripcion", 10, "resumen");
+        Product product7 = new Product("https://www.pharmashop.es/19860-home_default/suero-sos-desalterante-30ml.jpg", "Culadíe suero 30ml","Cosmetica", 5, "descripcion", 10, "resumen");
         productRepository.save(product7);
         Product product8 = new Product("https://www.pharmashop.es/21744-big_default/vitis-enjuague-bucal-aloe-vera-1-l.jpg", "Vitis Enjuage Bucal Aloe Veras 1L","Dental", 9.55, "Nuestro Vitis Colutorio 1000 ml es un enjuague bucal que te puede ayudar a reducir la placa bacteriana. Esta, a su vez, es la causa más importante de la aparición de la gingivitis que, de paso, también podría ser evitada mediante este producto. Además, puedes usar el Colutorio Vitis todos los días, porque no irritará tus encías y te brinda un exquisito sabor.", 26, "resumen");
         productRepository.save(product8);
@@ -104,13 +104,13 @@ public class Seeder implements CommandLineRunner {
 
         //Comments
 
-        Comment comment1 = new Comment(1,1, "Alejandro", "Comentario de Alejandro1");
+        Comment comment1 = new Comment(1,"Alex67", "Alejandro", "Comentario de Alejandro1");
         commentRepository.save(comment1);
-        Comment comment2 = new Comment(1,1, "Alejandro", "Comentario de Alejandro2");
+        Comment comment2 = new Comment(1,"Alex67", "Alejandro", "Comentario de Alejandro2");
         commentRepository.save(comment2);
-        Comment comment3 = new Comment(1,1, "Alejandro", "Comentario de Alejandro3");
+        Comment comment3 = new Comment(1,"Alex67", "Alejandro", "Comentario de Alejandro3");
         commentRepository.save(comment3);
-        Comment comment4 = new Comment(1,1, "Alejandro", "Comentario de Alejandro4");
+        Comment comment4 = new Comment(1,"Alex67", "Alejandro", "Comentario de Alejandro4");
         commentRepository.save(comment4);
     }
 }

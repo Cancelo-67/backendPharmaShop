@@ -14,7 +14,6 @@ import java.util.Set;
 
 @Entity
 @Getter@Setter
-@AllArgsConstructor
 @NoArgsConstructor
 @Table(name = "usercustom")
 public class User {
@@ -24,9 +23,9 @@ public class User {
 
     private String username;
 
-    private String surname;
+    private String name;
 
-    private String gender;
+    private String surname;
 
     public enum Role {
         ADMIN,
@@ -45,9 +44,9 @@ public class User {
 
     private String address;
 
-    private String token;
-
     private List<Long> favorites;
+
+    private List<Long> cart;
 
 
     //Relacion con el modelo Order
@@ -55,24 +54,25 @@ public class User {
     private Set<Order> orders = new HashSet<>();
 
 
-    public User(String username, String surname, String gender,Role role, String birthdate, String email, String password, String address, String token, List<Long> favorites, Set<Order> orders) {
+    public User(Long id,String username,String name, String surname,Role role, String birthdate, String email, String password, String address, List<Long> favorites, List<Long> cart, Set<Order> orders) {
+        this.id = id;
         this.username = username;
+        this.name = name;
         this.surname = surname;
-        this.gender = gender;
         this.role = role;
         this.birthdate = birthdate;
         this.email = email;
         this.password = new BCryptPasswordEncoder().encode(password);
         this.address = address;
-        this.token = token;
         this.favorites = favorites;
+        this.cart = cart;
         this.orders = orders;
     }
 
     //Constructor para login y actualizar el token
     public User(String username, String surname, String token) {
         this.username = username;
+        this.name = name;
         this.surname = surname;
-        this.token = token;
     }
 }
