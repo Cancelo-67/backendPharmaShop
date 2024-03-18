@@ -1,12 +1,12 @@
 package es.apipharmashop.apipharmashop.models;
 
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
+import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
@@ -44,17 +44,15 @@ public class User {
 
     private String address;
 
+    @ElementCollection
     private List<Long> favorites;
-
-    private List<Long> cart;
-
 
     //Relacion con el modelo Order
     @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, orphanRemoval = true)
     private Set<Order> orders = new HashSet<>();
 
 
-    public User(Long id,String username,String name, String surname,Role role, String birthdate, String email, String password, String address, List<Long> favorites, List<Long> cart, Set<Order> orders) {
+    public User(Long id,String username,String name, String surname,Role role, String birthdate, String email, String password, String address, List<Long> favorites, Set<Order> orders) {
         this.id = id;
         this.username = username;
         this.name = name;
@@ -65,14 +63,8 @@ public class User {
         this.password = new BCryptPasswordEncoder().encode(password);
         this.address = address;
         this.favorites = favorites;
-        this.cart = cart;
         this.orders = orders;
     }
 
     //Constructor para login y actualizar el token
-    public User(String username, String surname, String token) {
-        this.username = username;
-        this.name = name;
-        this.surname = surname;
-    }
 }
